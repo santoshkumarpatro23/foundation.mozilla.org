@@ -17,7 +17,8 @@ class ImageGrid(blocks.StructBlock):
     image = ImageChooserBlock()
     alt_text = blocks.CharBlock(
         required=False,
-        help_text='Alt text for this image.'
+        help_text='Alt text for this image.',
+        required=False,
     )
     caption = blocks.CharBlock(
         required=False,
