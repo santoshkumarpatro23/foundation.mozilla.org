@@ -18,7 +18,6 @@ class ImageGrid(blocks.StructBlock):
     alt_text = blocks.CharBlock(
         required=False,
         help_text='Alt text for this image.',
-        required=False,
     )
     caption = blocks.CharBlock(
         required=False,
