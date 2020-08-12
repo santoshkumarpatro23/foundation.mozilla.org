@@ -12,7 +12,6 @@ django-redis
 django-storages
 factory_boy
 Faker
-filebrowser-safe
 future
 gunicorn
 python-slugify

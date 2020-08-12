@@ -47,8 +47,6 @@ env = environ.Env(
     DJANGO_LOG_LEVEL=(str, 'INFO'),
     DOMAIN_REDIRECT_MIDDLEWARE_ENABLED=(bool, False),
     FEED_LIMIT=(int, 10),
-    FILEBROWSER_DEBUG=(bool, False),
-    FILEBROWSER_DIRECTORY=(str, ''),
     GITHUB_TOKEN=(str, ''),
     HEROKU_APP_NAME=(str, ''),
     HEROKU_BRANCH=(str, ''),
@@ -118,7 +116,7 @@ APP_DIR = app()
 SECRET_KEY = env('DJANGO_SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = FILEBROWSER_DEBUG = env('DEBUG')
+DEBUG = env('DEBUG')
 
 # whether or not to send the X-Robots-Tag header
 XROBOTSTAG_ENABLED = env('XROBOTSTAG_ENABLED')
@@ -129,9 +127,6 @@ TARGET_DOMAINS = env('TARGET_DOMAINS')
 
 # Temporary Redirect for Mozilla Festival domain
 MOZFEST_DOMAIN_REDIRECT_ENABLED = env('MOZFEST_DOMAIN_REDIRECT_ENABLED')
-
-if env('FILEBROWSER_DEBUG') or DEBUG != env('FILEBROWSER_DEBUG'):
-    FILEBROWSER_DEBUG = env('FILEBROWSER_DEBUG')
 
 ALLOWED_HOSTS = env('ALLOWED_HOSTS')
 CSRF_TRUSTED_ORIGINS = ALLOWED_HOSTS
@@ -469,8 +464,6 @@ if USE_S3:
     MEDIA_ROOT = ''
     # This is a workaround for https://github.com/wagtail/wagtail/issues/3206
     AWS_S3_FILE_OVERWRITE = False
-
-    FILEBROWSER_DIRECTORY = env('FILEBROWSER_DIRECTORY')
 
 else:
     # Otherwise use the default filesystem storage
