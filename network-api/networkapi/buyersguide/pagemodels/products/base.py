@@ -16,6 +16,7 @@ from ..product_update import Update as ProductUpdate
 from modelcluster.models import ClusterableModel
 
 from wagtail.admin.edit_handlers import FieldPanel, InlinePanel, MultiFieldPanel
+from wagtail.snippets.models import register_snippet
 
 from ..cloudinary_image_field import CloudinaryField
 from ..get_product_image_upload_path import get_product_image_upload_path
@@ -161,6 +162,7 @@ def register_product_type(ModelClass):
     registered_product_types.append(ModelClass)
 
 
+@register_snippet
 class Product(ClusterableModel):
     """
     A product that may not have privacy included.

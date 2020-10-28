@@ -16,6 +16,7 @@ from networkapi.buyersguide.pagemodels.cloudinary_image_field import (
 from networkapi.wagtailpages.pagemodels.mixin.foundation_metadata import (
     FoundationMetadataPageMixin
 )
+from networkapi.buyersguide.pagemodels.products.base import Product
 from networkapi.buyersguide.pagemodels.product_category import BuyersGuideProductCategory
 from networkapi.buyersguide.pagemodels.product_update import Update
 
@@ -287,6 +288,12 @@ class ProductPage(FoundationMetadataPageMixin, Page):
         help_text='Twitter username',
         blank=True,
     )
+    legacy_product = models.ForeignKey(
+        Product,
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL
+    )
 
     @property
     def is_current(self):
@@ -397,6 +404,12 @@ class ProductPage(FoundationMetadataPageMixin, Page):
             ],
             heading='Related Products',
         ),
+        MultiFieldPanel(
+            [
+                SnippetChooserPanel('legacy_product')
+            ],
+            heading='Legacy product',
+        )
     ]
 
     class Meta:
