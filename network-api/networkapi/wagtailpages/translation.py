@@ -31,6 +31,7 @@ from .models import (
     GeneralProductPage,
     ProductPage,
     SoftwareProductPage,
+    BuyersGuidePage,
 
     # DEPRECATED
     PeoplePage,
@@ -270,4 +271,9 @@ class SoftwareProductPageTR(TranslationOptions):
 
 @register(GeneralProductPage)
 class GeneralProductPageTR(TranslationOptions):
+    fields = ()
+
+
+@register(BuyersGuidePage)
+class BuyersGuidePageTR(TranslationOptions):
     fields = ()
