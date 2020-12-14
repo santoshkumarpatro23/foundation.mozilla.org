@@ -50,7 +50,18 @@ class BuyersGuideProductCategory(models.Model):
 
     @property
     def published_product_count(self):
+        """
+        TODO: remove this code once we get rid of Products
+        """
         return Product.objects.filter(product_category=self, draft=False).count()
+
+    @property
+    def published_product_page_count(self):
+        # TODO: FIXME: This is incredibly ugly but prevents a circular dependency
+        from networkapi.wagtailpages.models import ProductPage
+
+        # note the field rename from `product_category` to `product_categories`
+        return ProductPage.objects.filter(product_categories__category=self, live=True).count()
 
     def __str__(self):
         return self.name

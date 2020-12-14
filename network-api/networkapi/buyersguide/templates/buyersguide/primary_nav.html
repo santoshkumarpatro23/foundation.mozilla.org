@@ -13,16 +13,15 @@
 {% endblock %}
 
 {% block narrow_screen_nav_links %}
-{% url 'buyersguide-home' as home_url %}
-<div><a class="{% bg_active_nav request.get_full_path home_url %}" href="{{ home_url }}">{% trans "Privacy Not Included" %}</a></div>
-{% include "buyersguide/fragments/pni_nav_links.html" with pre="<div>" post="</div>" %}
+<div><a class="{% bg_active_nav request.get_full_path page.url %}" href="{{ page.url }}">{% trans "Privacy Not Included" %}</a></div>
+{% include "./fragments/pni_nav_links.html" with pre="<div>" post="</div>" %}
 {% endblock %}
 
 {% block wide_screen_menu %}{% endblock %}
 
 {% block donate_and_newsletter %}
 <div class="d-flex align-items-center">
-  {% include "buyersguide/fragments/pni_nav_links.html" with class="primary-nav-special-link d-none d-md-block" %}
+  {% include "./fragments/pni_nav_links.html" with class="primary-nav-special-link d-none d-md-block" %}
   <a id="donate-header-btn" class="primary-nav-special-link heart-glyph" href="https://donate.mozilla.org/" target="_blank" rel="noopener noreferrer">{% trans "Donate" %}</a>
   {% if page.signup == None %}<button class="btn btn-secondary btn-newsletter d-none d-lg-block ml-md-3">{% trans "Newsletter" %}</button>{% endif %}
 </div>

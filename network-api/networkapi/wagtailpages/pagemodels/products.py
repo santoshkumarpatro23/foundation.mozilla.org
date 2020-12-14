@@ -899,6 +899,7 @@ class BuyersGuidePage(RoutablePageMixin, FoundationMetadataPageMixin, Page):
     template = 'buyersguide/home.html'
     subpage_types = [SoftwareProductPage, GeneralProductPage]
 
+    """
     @route(r'^about/$', name='how-to-use-view')
     def about_page(self, request):
         context = self.get_context(request)
@@ -998,6 +999,7 @@ class BuyersGuidePage(RoutablePageMixin, FoundationMetadataPageMixin, Page):
                 '*privacy not included') + f' - {category}'
 
         return render(request, "buyersguide/category_page.html", context)
+    """
 
     def get_sitemap_urls(self, request):
         """
